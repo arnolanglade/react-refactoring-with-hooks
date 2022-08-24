@@ -10,3 +10,6 @@ services:
       - './:/srv/game'
       - '${YARN_CACHE_FOLDER:-~/.cache/yarn}:/home/node/.yarn'
     working_dir: '/srv/game'
+    command: 'yarn react-scripts start'
+    ports:
+      - "3000:3000"
