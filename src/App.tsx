@@ -43,24 +43,25 @@ function App() {
         }))
     };
 
-    return (
-        <List
-            sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: 'auto'}}
-            subheader={<ListSubheader>Todo list</ListSubheader>}
-        >
-            {
-                tasks.map((todo: Task) => <ListItem key={todo.id}>
-                        <ListItemText primary={todo.label}/>
-                        <Switch
-                            edge="end"
-                            onChange={onTaskDoneButtonClick(todo.id)}
-                            checked={todo.done}
-                        />
-                    </ListItem>
-                )
-            }
-        </List>
-    );
+  return (
+      <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: 'auto' }}
+          subheader={<ListSubheader>Todo list</ListSubheader>}
+      >
+        {
+          tasks.map((todo: Task) => <ListItem key={todo.id} data-testid={`task-${todo.id}`}>
+            <ListItemText primary={todo.label} />
+            <Switch
+                edge="end"
+                data-testid={todo.label}
+                onChange={onTaskDoneButtonClick(todo.id)}
+                checked={todo.done}
+            />
+          </ListItem>
+          )
+        }
+      </List>
+  );
 }
 
 export default App;
